@@ -7,7 +7,7 @@ provider:
   stage: dev
   region: us-west-1
   environment:
-    DYNAMODB_TABLE_NAME: ${$self:custom.postsTableName}
+    DYNAMODB_TABLE_NAME: ${self:custom.postsTableName}
 
 custom:
   postsTableName: posts-table-${self:provider.stage}
@@ -87,7 +87,7 @@ functions:
           - "dynamodb:Scan"
         Resource: !GetAtt PostsTable.Arn
 
-# config to deploy dynamodb table
+# Config to deploy dynamoDB
 resources:
   Resources:
     PostsTable:
